@@ -6,7 +6,7 @@ var Action = require('./action');
 var socket = io.connect('http://localhost:1336');
 var schedule = require('node-schedule');
 var rf=require("fs");
-var data=rf.readFileSync('./dfh_data',"utf-8");
+var data=rf.readFileSync('./yzc_data',"utf-8");
 console.log(data);
 var arr;
 if (typeof data == 'string') {
@@ -17,7 +17,7 @@ if (typeof data == 'string') {
 console.log(arr);
 socket.on('connect', function(){
     console.log('client connect');
-    socket.emit(Action.join_room,'东方红专区');
+    socket.emit(Action.join_room,'余则成');
     broadcastDFH(socket);
     socket.emit(Action.channel_list);
     socket.on(Action.channel_list,function(data){
@@ -37,8 +37,8 @@ var broadcastDFH = function(socket){
 
     rule.second = times;
     var json_obj = {
-        from:'dfh',
-        room:'东方红专区',
+        from:'yzc',
+        room:'余则成',
         data:''
     };
     var c=0;
